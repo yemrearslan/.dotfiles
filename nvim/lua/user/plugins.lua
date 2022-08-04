@@ -104,9 +104,8 @@ return packer.startup(function(use)
     -- Git
     use "lewis6991/gitsigns.nvim"
 
-    require("autosave").setup({
-        enabled =true
-
+    require("auto-save").setup({
+        enabled =true,
     })
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

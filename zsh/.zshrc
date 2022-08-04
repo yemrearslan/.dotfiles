@@ -5,6 +5,7 @@ export COLORTERM=truecolor
 
 fastfetch
 
+
 #ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_UNICODE=true
 HISTFILE=~/.cache/zshhistory
