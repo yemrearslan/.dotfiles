@@ -1,0 +1,12 @@
+zsh/oh-my-zsh
+zsh/.zcompdump*
+zsh/.dir_colors.old
+ssh/known_hosts*
+.venv
+**/.code/
+**/.vscode/
+**/__pycache__/ 
+nvim/plugin
+zsh/plugins/zsh-autopair  
+zsh/plugins/zsh-autosuggestions  
+zsh/plugins/zsh-syntax-highlighting
