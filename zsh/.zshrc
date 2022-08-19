@@ -1,4 +1,7 @@
 export PATH="$HOME/.dotfiles/scripts:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.avm//bin:$PATH"
 #export EDITOR=nvim
 export BROWSER="brave"
 export COLORTERM=truecolor
@@ -165,3 +168,5 @@ alias mpv-cli="mpv -vo tct"
 alias setupvpn="nmcli connection import type openvpn file "  # pass .ovpn file location
 alias sysinfo="sudo inxi -v8"
 alias mario="$HOME/Downloads/super_mario/Super_Mario_127_0.7.2.x86_64"
+alias logs="journalctl -xef -p 3"
+alias tünelle="ssh -L 8899:127.0.0.1:8899 -N -f office"

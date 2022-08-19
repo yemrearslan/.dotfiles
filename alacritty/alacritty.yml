@@ -589,10 +589,9 @@ key_bindings:
 
 
 schemes:
-  # Tokyo Night theme, based on both:
-  #   https://github.com/ghifarit53/tokyonight-vim
-  #   https://github.com/enkia/tokyo-night-vscode-theme
-  tokyo-night: &tokyo-night
+  # i think i based it on tokio-night but later i customized it so much that it's not 
+  # related to tokio-night anymore
+  emre-custom: &emre-custom
     # Default colors
     primary:
       background: '0x161923'
@@ -621,6 +620,35 @@ schemes:
       white:   '0xffffff'
 
 
+  # Colors (iTerm 2 default theme)
+  iterm: &iterm
+    # Default colors
+    primary:
+      background: '0x101421'
+      foreground: '0xfffbf6'
+  
+    # Normal colors
+    normal:
+      black:   '0x2e2e2e'
+      red:     '0xeb4129'
+      green:   '0xabe047'
+      yellow:  '0xf6c744'
+      blue:    '0x47a0f3'
+      magenta: '0x7b5cb0'
+      cyan:    '0x64dbed'
+      white:   '0xe5e9f0'
+  
+    # Bright colors
+    bright:
+      black:   '0x565656'
+      red:     '0xec5357'
+      green:   '0xc0e17d'
+      yellow:  '0xf9da6a'
+      blue:    '0x49a4f8'
+      magenta: '0xa47de9'
+      cyan:    '0x99faf2'
+      white:   '0xffffff'
+  
 
 
-colors: *tokyo-night
+colors: *emre-custom
