@@ -282,8 +282,3 @@ function git_repo_name() {
   fi
 }
 
-
-
-
-
-

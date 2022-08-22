@@ -1,6 +1,6 @@
-bindkey "^[[3~" delete-char # delete tuşu ~ karakterini girmesin, ters silme yapsın diye
-bindkey  "^[[H"   beginning-of-line # home tuşu işini yapsın
-bindkey  "^[[F"   end-of-line # end tuşu işini yapsın
+bindkey "^[[3~" delete-char         # delete tuşu ~ karakterini girmesin, ters silme yapsın diye
+bindkey "^[[H"   beginning-of-line  # home tuşu işini yapsın
+bindkey "^[[F"   end-of-line        # end tuşu işini yapsın
 
 zsh_add_file "plugins/git_prompt.zsh"
 

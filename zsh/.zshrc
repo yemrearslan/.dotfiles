@@ -8,7 +8,6 @@ export COLORTERM=truecolor
 
 fastfetch
 
-
 #ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_UNICODE=true
 HISTFILE=~/.cache/zshhistory
@@ -45,13 +44,12 @@ function zsh_add_plugin() {
     fi
 }
 
-function zsh_add_file_fullpath ()
-{
+function zsh_add_file_fullpath() {
     [ -f "$1" ] && source "$1"
 }
 
 #zsh_add_file "plugins/preferences.zsh"
-zsh_add_file "plugins/prompt-zsh"
+zsh_add_file "plugins/prompt.zsh"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
@@ -71,8 +69,7 @@ function git-fixssh() {
 	ssh-add $DEFAULT_SSH_KEY
 }
 
-function git-create-push ()
-{
+function git-create-push(){
     git push --set-upstream-to git@gitlab.com:yemrearslan/$folder.git master
 }
 
@@ -104,7 +101,7 @@ if [[ "$distro" == "arch" ]]; then
 	day(){brightness 90}
 	reading(){brightness 0}
     brup(){  ddcutil -d 1 setvcp 10 $(($(ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4) + 10)) }
-    brdown(){ddcutil -d 1 setvcp 10 $(($(ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4) - 10))}
+    brdown(){ddcutil -d 1 setvcp 10 $(($(ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4) - 10)) }
 elif [[ "$distro" == "ubuntu" ]]; then
     alias up="sudo apt update && sudo apt upgrade"
 elif [[ "$distro" == "termux" ]]; then
@@ -112,7 +109,6 @@ elif [[ "$distro" == "termux" ]]; then
 	alias arch="proot-distro login archlinux --user emre"
 	alias termux-backup="cd /data/data/com.termux/files && tar -zcvf /sdcard/termux-backup.tar.gz home usr"
 	alias termux-restore="cd /data/data/com.termux/files && tar -zxf /sdcard/termux-backup.tar.gz --recursive-unlink --preserve-permissions"
-	alias termux-up="pkg upgrade"
 	alias zork="frotz /data/data/com.termux/files/home/storage/shared/Download/zork1/DATA/ZORK1.DAT"
 else
     echo "unknown distro"
@@ -123,7 +119,7 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias sudo='sudo '
-alias vimrc="nvim ~/.config/nvim/init.vim"
+alias vimrc="nvim ~/.config/nvim/"
 alias sshconfig="nvim ~/.ssh/config"
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 alias sourcezsh="source ~/.config/zsh/.zshrc"
@@ -169,4 +165,3 @@ alias setupvpn="nmcli connection import type openvpn file "  # pass .ovpn file l
 alias sysinfo="sudo inxi -v8"
 alias mario="$HOME/Downloads/super_mario/Super_Mario_127_0.7.2.x86_64"
 alias logs="journalctl -xef -p 3"
-alias tünelle="ssh -L 8899:127.0.0.1:8899 -N -f office"
