@@ -138,6 +138,7 @@ alias gitfetch="onefetch"
 alias yt="ytfzf"
 #alias rm='trash' # Use `trash` program instead of built-in irrecoverable way to delete nodes.
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ip="ip -c"
 
 # useful
 wifi-connect(){sudo nmcli device wifi connect $1 password $2}
