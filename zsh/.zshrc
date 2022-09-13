@@ -166,3 +166,4 @@ alias setupvpn="nmcli connection import type openvpn file "  # pass .ovpn file l
 alias sysinfo="sudo inxi -v8"
 alias mario="$HOME/Downloads/super_mario/Super_Mario_127_0.7.2.x86_64"
 alias logs="journalctl -xef -p 3"
+alias weather="curl wttr.in/mersin"
