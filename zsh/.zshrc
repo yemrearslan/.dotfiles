@@ -22,6 +22,8 @@ if [[ "$HOME" == *"com.termux"* ]]; then
     distro="termux"                                                                                                        
 elif [[ "$(cat /etc/*elease)" == *"Manjaro"* ]]; then                                                                      
     distro="arch";                                                                                                         
+elif [[ "$(cat /etc/*elease)" == *"EndeavourOS"* ]]; then                                                                      
+    distro="arch";                                                                                                         
 elif [[ "$(cat /etc/*elease)" == *"Arch"* ]]; then                                                                         
     distro="arch";                                                                                                         
 elif [[ "$(cat /etc/*elease)" == *"Ubuntu"* ]]; then                                                                       
