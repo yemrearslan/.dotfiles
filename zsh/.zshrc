@@ -93,6 +93,7 @@ wifi-reconnect(){
 
 if [[ "$distro" == "arch" ]]; then
 	alias up="paru -Syu"
+    alias ssh="kitty +kitten ssh"
     brightness(){
 		if [[ $# > 0 ]]; then ddcutil -d 1 setvcp 10 $1
 		else ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4
@@ -141,7 +142,6 @@ alias yt="ytfzf"
 #alias rm='trash' # Use `trash` program instead of built-in irrecoverable way to delete nodes.
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ip="ip -c"
-alias ssh="kitty +kitten ssh"
 
 # useful
 wifi-connect(){sudo nmcli device wifi connect $1 password $2}
