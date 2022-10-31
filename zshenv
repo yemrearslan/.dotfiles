@@ -17,7 +17,7 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 
 # wget
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+#export WGETRC=$HOME/.config/wgetrc
 
 #~/.config/git/config
 # git (.gitconfig dosyasını buraya taşımak yeterli oluyor)

@@ -93,7 +93,7 @@ wifi-reconnect(){
 
 if [[ "$distro" == "arch" ]]; then
 	alias up="paru -Syu"
-    alias ssh="kitty +kitten ssh"
+    alias s="kitty +kitten ssh"
     brightness(){
 		if [[ $# > 0 ]]; then ddcutil -d 1 setvcp 10 $1
 		else ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4
