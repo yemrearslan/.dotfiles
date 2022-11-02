@@ -1,13 +1,11 @@
 export PATH="$HOME/.dotfiles/scripts:$PATH"
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.avm//bin:$PATH"
 #export EDITOR=nvim
 export BROWSER="brave"
 export COLORTERM=truecolor
+export TERM=xterm-256color
 
 fastfetch
-
 #ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_UNICODE=true
 HISTFILE=~/.cache/zshhistory
@@ -17,20 +15,6 @@ SAVEHIST=100000
 setopt autocd beep extendedglob		# nomatch
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit	# zsh autocomplete init
-
-if [[ "$HOME" == *"com.termux"* ]]; then                                                                                   
-    distro="termux"                                                                                                        
-elif [[ "$(cat /etc/*elease)" == *"Manjaro"* ]]; then                                                                      
-    distro="arch";                                                                                                         
-elif [[ "$(cat /etc/*elease)" == *"EndeavourOS"* ]]; then                                                                      
-    distro="arch";                                                                                                         
-elif [[ "$(cat /etc/*elease)" == *"Arch"* ]]; then                                                                         
-    distro="arch";                                                                                                         
-elif [[ "$(cat /etc/*elease)" == *"Ubuntu"* ]]; then                                                                       
-    distro="ubuntu"                                                                                                        
-else                                                                                                                       
-    distro="not found"                                                                                                     
-fi                                                                                                                         
 
 function zsh_add_file() {
     [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
@@ -72,7 +56,7 @@ function git-fixssh() {
 }
 
 function git-create-push(){
-    git push --set-upstream-to git@gitlab.com:yemrearslan/$folder.git master
+    git push --set-upstream-to git@gitlab.com:yemrearslan/$1.git master
 }
 
 wifi-setdns(){
@@ -91,36 +75,10 @@ wifi-reconnect(){
 	done
 }
 
-if [[ "$distro" == "arch" ]]; then
-	alias up="paru -Syu"
-    alias s="kitty +kitten ssh"
-    brightness(){
-		if [[ $# > 0 ]]; then ddcutil -d 1 setvcp 10 $1
-		else ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4
-		fi
-	}	# https://lyndeno.ca/posts/setting-up-external-monitor-brightness	
-        # add user to i2c group with "usermod -aG i2c $USER" (create i2c group with "groupadd i2c" if doesn't exist)
-	night(){brightness 40}
-	day(){brightness 90}
-	reading(){brightness 0}
-    brup(){  ddcutil -d 1 setvcp 10 $(($(ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4) + 10)) }
-    brdown(){ddcutil -d 1 setvcp 10 $(($(ddcutil -d 1 getvcp 10 --brief | cut -d " " -f 4) - 10)) }
-elif [[ "$distro" == "ubuntu" ]]; then
-    alias up="sudo apt update && sudo apt upgrade"
-elif [[ "$distro" == "termux" ]]; then
-    alias up="pkg upgrade"
-	alias arch="proot-distro login archlinux --user emre"
-	alias termux-backup="cd /data/data/com.termux/files && tar -zcvf /sdcard/termux-backup.tar.gz home usr"
-	alias termux-restore="cd /data/data/com.termux/files && tar -zxf /sdcard/termux-backup.tar.gz --recursive-unlink --preserve-permissions"
-	alias zork="frotz /data/data/com.termux/files/home/storage/shared/Download/zork1/DATA/ZORK1.DAT"
-else
-    echo "unknown distro"
-fi
 
 # preferences
-alias v="nvim"
 alias vi="nvim"
-alias vim="nvim"
+alias vim="vi"
 alias sudo='sudo '
 alias vimrc="nvim ~/.config/nvim/"
 alias sshconfig="nvim ~/.ssh/config"
@@ -163,7 +121,6 @@ alias rate="curl usd.rate.sx/eth@30d"
 alias matrix="neo-matrix"
 #alias monitor-list="xrandr -q | grep ' connected' | head -n 1 | cut -d ' ' -f1"
 #alias monitor-off="xrandr --output $(monitor-list) --off"
-#alias lock="qdbus org.kde.ksmserver /ScreenSaver org.freedesktop.ScreenSaver.Lock"
 alias mpv-cli="mpv -vo tct"
 alias setupvpn="nmcli connection import type openvpn file "  # pass .ovpn file location
 alias sysinfo="sudo inxi -v8"
