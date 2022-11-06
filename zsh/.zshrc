@@ -1,4 +1,4 @@
-export PATH="$HOME/.dotfiles/scripts:$PATH"
+export PATH="$HOME/.keys/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 #export EDITOR=nvim
 export BROWSER="brave"
@@ -105,7 +105,7 @@ alias ip="ip -c"
 wifi-connect(){sudo nmcli device wifi connect $1 password $2}
 check-port(){ss -plant | grep :$1}	# which pid uses that port
 kill-port(){kill -9 $(lsof -t -i tcp:$1)}
-burn(){sudo dd if=$1 of=/dev/$2 bs=10M status=progress;}
+burn(){sudo dd if=$1 of=$2 bs=10M status=progress}
 alias watchcpu='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias ramspeed='sudo dmidecode --type 17 | grep Speed'
 alias mp3="youtube-dl -i --extract-audio --audio-format mp3 --audio-quality 0"
