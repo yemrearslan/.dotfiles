@@ -35,8 +35,8 @@ local hostname=$(blue $HOST)
 local current_dir=$(yellow %~ )%{$reset_color%}
 
 if [[ "$distro" == "termux" ]]; then
-    user="emre"
-    host="galaxy"
+    local user=$(green emre)
+    local hostname=$(blue galaxy)
 fi
 
 PROMPT="╭─ $user $(dim at) $hostname $(dim in) $current_dir \$(git_prompt_info) $date - $time
