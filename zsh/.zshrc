@@ -91,7 +91,7 @@ alias ln='ln --interactive --verbose'
 alias l='exa --icons'
 alias ll='exa -lah --icons'
 alias md='mkdir -p'
-alias rd='rmdir'
+alias rd='rm -r'
 alias mkdir='mkdir --parents'
 alias grep="grep --color='auto'"
 alias wget="wget --hsts-file ~/.config/wget/wget-hsts"

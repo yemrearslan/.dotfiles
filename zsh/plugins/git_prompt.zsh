@@ -1,5 +1,3 @@
-
-  
 # The git prompt's git commands are read-only and should not interfere with
 # other processes. This environment variable is equivalent to running with `git
 # --no-optional-locks`, but falls back gracefully for older versions of git.
@@ -21,6 +19,7 @@ function git_prompt_info() {
 
   local ref
   ref=$(__git_prompt_git symbolic-ref --short HEAD 2> /dev/null) \
+  || ref=$(__git_prompt_git describe --tags --exact-match HEAD 2> /dev/null) \
   || ref=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) \
   || return 0
 
@@ -281,4 +280,3 @@ function git_repo_name() {
     echo ${repo_path:t}
   fi
 }
-
