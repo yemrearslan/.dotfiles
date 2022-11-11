@@ -5,7 +5,12 @@ export BROWSER="brave"
 export COLORTERM=truecolor
 export TERM=xterm-256color
 
-fastfetch
+if [ ! command -v fastfetch &> /dev/null ]; then
+    fastfetch
+else
+    macchina
+fi  
+
 #ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_UNICODE=true
 HISTFILE=~/.cache/zshhistory
