@@ -11,3 +11,4 @@ zsh/oh-my-zsh
 zsh/.zcompdump*
 zsh/.dir_colors.old
 zsh/.zsh_sessions
+zsh/.zsh_history
