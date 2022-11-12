@@ -23,4 +23,3 @@ export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 # git (.gitconfig dosyasını buraya taşımak yeterli oluyor)
 
 export SYSCONFDIR="$XDG_CONFIG_HOME"
-. "$HOME/.cargo/env"
