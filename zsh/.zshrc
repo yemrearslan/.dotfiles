@@ -5,9 +5,9 @@ export BROWSER="brave"
 export COLORTERM=truecolor
 export TERM=xterm-256color
 
-if [ ! command -v fastfetch &> /dev/null ]; then
+if (( ${+commands[fastfetch]} )) then
     fastfetch
-else
+elif (( ${+commands[macchina]} )) then
     macchina
 fi  
 
