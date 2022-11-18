@@ -102,9 +102,10 @@ alias grep="grep --color='auto'"
 alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 alias gitfetch="onefetch"
 alias yt="ytfzf"
+alias ip="ip -c"
+alias curl="curlie"
 #alias rm='trash' # Use `trash` program instead of built-in irrecoverable way to delete nodes.
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias ip="ip -c"
 
 # useful
 wifi-connect(){sudo nmcli device wifi connect $1 password $2}
