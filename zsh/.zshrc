@@ -3,7 +3,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #export EDITOR=nvim
 export BROWSER="brave"
 export COLORTERM=truecolor
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 if (( ${+commands[fastfetch]} )) then
     fastfetch
