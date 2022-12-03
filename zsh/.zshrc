@@ -97,13 +97,13 @@ alias l='exa --icons'
 alias ll='exa -lah --icons'
 alias md='mkdir -p'
 alias rd='rm -r'
-alias mkdir='mkdir --parents'
+alias mkdir='mkdir -p'
 alias grep="grep --color='auto'"
 alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 alias gitfetch="onefetch"
 alias yt="ytfzf"
 alias ip="ip -c"
-alias curl="curlie"
+#alias curl="curlie --pretty"
 #alias rm='trash' # Use `trash` program instead of built-in irrecoverable way to delete nodes.
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -120,8 +120,8 @@ alias wifi-on="sudo nmcli radio wifi on"
 alias wifi-off="sudo nmcli radio wifi off"
 alias wifi-scan="nmcli device wifi list"
 alias down="youtube-dl"
-alias publicip="curl ipinfo.io"
-alias pi="curl -L ipgrab.io" # ipinfo.io/ip
+alias publicip="curlie ipinfo.io --pretty"
+alias pi="curl -L https://ipgrab.io" # ipinfo.io/ip
 alias map="telnet mapscii.me"
 alias rate="curl usd.rate.sx/eth@30d"
 alias matrix="neo-matrix"
