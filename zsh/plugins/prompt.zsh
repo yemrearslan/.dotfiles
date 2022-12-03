@@ -15,6 +15,8 @@ blue(){echo "%F{033}$1%{$reset_color%}"}
 dim(){echo "%F{239}$1%{$reset_color%}"}
 yellow(){echo "%F{226}$1%{$reset_color%}"}
 git_red(){echo "%F{202}$1%{$reset_color%}"}
+orange(){echo "%F{130}$1%{$reset_color%}"}
+pink(){echo "%F{140}$1%{$reset_color%}"}
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{239}on %F{147}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -31,6 +33,7 @@ function prompt_char {
 local user=$(green %n)
 local date=%D{%d.%m.%y} # date with format dd.mm.yy
 local time=%* # 24hr time with seconds. # https://linux.die.net/man/3/strftime
+time=$(pink $time)
 local hostname=$(blue $HOST)
 local current_dir=$(yellow %~ )%{$reset_color%}
 
