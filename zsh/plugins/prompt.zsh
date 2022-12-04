@@ -30,11 +30,23 @@ function prompt_char {
     echo '○'
 }
 
+if [[ "$HOST" == "macbook" ]]; then 
+    local hostname=$(blue $HOST)
+elif [[ "$HOST" == "machine" ]]; then 
+    local hostname=$(red $HOST)
+elif [[ "$HOST" == "Makina" ]]; then 
+    local hostname=$(orange $HOST)
+elif [[ "$HOST" == "placeholder" ]]; then 
+    local hostname=$(blue $HOST)
+else
+    local hostname=$(blue $HOST)
+fi
+
 local user=$(green %n)
 local date=%D{%d.%m.%y} # date with format dd.mm.yy
 local time=%* # 24hr time with seconds. # https://linux.die.net/man/3/strftime
 time=$(pink $time)
-local hostname=$(blue $HOST)
+#local hostname=$(blue $HOST)
 local current_dir=$(yellow %~ )%{$reset_color%}
 
 if [[ "$distro" == "termux" ]]; then
