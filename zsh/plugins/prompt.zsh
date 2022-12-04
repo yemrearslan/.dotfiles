@@ -40,7 +40,7 @@ elif [[ "$HOST" == "Makina" ]]; then
 elif [[ "$HOST" == "placeholder" ]]; then 
     local hostname=$(blue $HOST)
 else
-    local hostname=$(blue $HOST)
+    local hostname=$(yellow $HOST)
 fi
 
 local user=$(green %n)
