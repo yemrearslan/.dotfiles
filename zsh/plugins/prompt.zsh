@@ -17,6 +17,7 @@ yellow(){echo "%F{226}$1%{$reset_color%}"}
 git_red(){echo "%F{202}$1%{$reset_color%}"}
 orange(){echo "%F{130}$1%{$reset_color%}"}
 pink(){echo "%F{140}$1%{$reset_color%}"}
+red(){echo "%F{124}$1%{$reset_color%}"}
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{239}on %F{147}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
