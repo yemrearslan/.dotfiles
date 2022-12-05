@@ -5,12 +5,6 @@ export BROWSER="brave"
 export COLORTERM=truecolor
 #export TERM=xterm-256color
 
-if (( ${+commands[fastfetch]} )) then
-    fastfetch
-elif (( ${+commands[macchina]} )) then
-    macchina
-fi  
-
 #ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_UNICODE=true
 HISTFILE=~/.cache/zshhistory
@@ -80,7 +74,6 @@ wifi-reconnect(){
 	done
 }
 
-
 # preferences
 alias vi="nvim"
 alias vim="vi"
@@ -133,3 +126,5 @@ alias sysinfo="sudo inxi -v8"
 alias mario="$HOME/Downloads/super_mario/Super_Mario_127_0.7.2.x86_64"
 alias logs="journalctl -xef -p 3"
 alias weather="curl wttr.in/mersin"
+
+fastfetch
