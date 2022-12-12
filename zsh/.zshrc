@@ -96,6 +96,7 @@ alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 alias gitfetch="onefetch"
 alias yt="ytfzf"
 alias ip="ip -c"
+alias s="kitty +kitten ssh"
 #alias curl="curlie --pretty"
 #alias rm='trash' # Use `trash` program instead of built-in irrecoverable way to delete nodes.
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

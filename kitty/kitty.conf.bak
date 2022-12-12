@@ -19,6 +19,6 @@ initial_window_height 800
 
 
 # BEGIN_KITTY_THEME
-# Black
+# Blazer
 include current-theme.conf
 # END_KITTY_THEME
