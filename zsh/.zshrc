@@ -131,6 +131,6 @@ alias serve="python3 -m http.server 9000"
 alias filetypes="for file in ./*(.); do file $file; done"
 alias rsync="rsync -varz --info=progress2"
 alias dc="docker-compose"
-alias bul="find . --name"
-alias ara="find . --name"
+alias bul="find . -name"
+alias ara="find . -name"
 fastfetch
