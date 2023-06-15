@@ -4,7 +4,15 @@ if not status_ok then
 end
 
 local dashboard = require("alpha.themes.dashboard")
-
+local emre = {
+    
+[[███████╗███╗░░░███╗██████╗░███████╗░░░███████╗██╗░░██╗███████╗]],
+[[██╔════╝████╗░████║██╔══██╗██╔════╝░░░██╔════╝╚██╗██╔╝██╔════╝]],
+[[█████╗░░██╔████╔██║██████╔╝█████╗░░░░░█████╗░░░╚███╔╝░█████╗░░]],
+[[██╔══╝░░██║╚██╔╝██║██╔══██╗██╔══╝░░░░░██╔══╝░░░██╔██╗░██╔══╝░░]],
+[[███████╗██║░╚═╝░██║██║░░██║███████╗██╗███████╗██╔╝╚██╗███████╗]],
+[[╚══════╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝╚═╝╚══════╝╚═╝░░╚═╝╚══════╝]],
+}
 local text = {
 [[███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗]],
 [[████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║]],
@@ -14,7 +22,7 @@ local text = {
 [[╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝]],
 }
 
-dashboard.section.header.val = text
+dashboard.section.header.val = emre
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -31,7 +39,7 @@ local function footer()
 	-- local fortune = handle:read("*a")
 	-- handle:close()
 	-- return fortune
-	return "emre.exe is the best alayına rest"
+	return "emre is the best alayına rest"
 end
 
 dashboard.section.footer.val = footer()
