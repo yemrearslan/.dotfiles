@@ -49,6 +49,9 @@ vim.opt.shortmess:append "c"
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
+vim.cmd "let g:loaded_ruby_provider=0"
+vim.cmd "let g:loaded_perl_provider=0"
+vim.cmd "let g:loaded_node_provider=0"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
