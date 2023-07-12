@@ -135,5 +135,5 @@ alias bul="find . -name"
 alias ara="find . -name"
 alias icat="kitty +kitten icat"
 fastfetch
-zsh_add_file_fullpath "$HOME/local.zsh"
+zsh_add_file_fullpath "$HOME/.shell.zsh"
 
