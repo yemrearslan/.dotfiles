@@ -133,4 +133,5 @@ alias rsync="rsync -varz --info=progress2"
 alias dc="docker-compose"
 alias bul="find . -name"
 alias ara="find . -name"
+alias icat="kitty +kitten icat"
 fastfetch
