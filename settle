@@ -18,6 +18,7 @@ ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 ln -s $HOME/.dotfiles/alacritty $HOME/.config/alacritty
 ln -s $HOME/.dotfiles/i3 $HOME/.config/i3
 ln -s $HOME/.dotfiles/kitty $HOME/.config/kitty
+ln -s $HOME/.dotfiles/ranger $HOME/.config/ranger
 
 # locale - emre keyboard
 sudo ln -s $HOME/.dotfiles/locale/tr /usr/share/X11/xkb/symbols/tr               # sudo chmod 644 /usr/share/X11/xkb/symbols/tr # sudo chown root:root /usr/share/X11/xkb/symbols/tr
