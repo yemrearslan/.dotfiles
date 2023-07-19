@@ -134,6 +134,7 @@ alias dc="docker-compose"
 alias bul="find . -name"
 alias ara="find . -name"
 alias icat="kitty +kitten icat"
+alias clipboard="kitty +kitten clipboard"
 fastfetch
 zsh_add_file_fullpath "$HOME/.shell.zsh"
 
