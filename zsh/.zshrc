@@ -127,7 +127,7 @@ alias setupvpn="nmcli connection import type openvpn file "  # pass .ovpn file l
 alias sysinfo="sudo inxi -v8"
 alias mario="$HOME/Downloads/super_mario/Super_Mario_127_0.7.2.x86_64"
 alias logs="journalctl -xef -p 3"
-alias weather="curl wttr.in/mersin"
+alias weather="curl wttr.in/yenişehir+mersin"
 alias serve="python3 -m http.server 9000"
 alias filetypes="for file in ./*(.); do file $file; done"
 alias rsync="rsync -varz --info=progress2"
