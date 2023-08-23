@@ -107,6 +107,8 @@ wifi-connect(){sudo nmcli device wifi connect $1 password $2}
 check-port(){ss -plant | grep :$1}	# which pid uses that port
 kill-port(){kill -9 $(lsof -t -i tcp:$1)}
 burn(){sudo dd if=$1 of=$2 bs=10M status=progress}
+clone(){sudo dd if=$1 bs=64M status=progress | gzip -c > $2.img.gz}
+restore(){gzip -cd < $1 | sudo dd of=$2 bs=64M}
 alias watchcpu='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias ramspeed='sudo dmidecode --type 17 | grep Speed'
 alias mp3="youtube-dl -i --extract-audio --audio-format mp3 --audio-quality 0"
@@ -131,7 +133,7 @@ alias weather="curl wttr.in/yenişehir+mersin"
 alias serve="python3 -m http.server 9000"
 alias filetypes="for file in ./*(.); do file $file; done"
 alias rsync="rsync -varz --info=progress2"
-alias dc="docker-compose"
+alias dc="docker compose"
 alias bul="find . -name"
 alias ara="find . -name"
 alias icat="kitty +kitten icat"
