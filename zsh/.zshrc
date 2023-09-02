@@ -1,6 +1,6 @@
 export PATH="$HOME/.keys/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-#export EDITOR=nvim
+export EDITOR=nvim
 export BROWSER="brave"
 export COLORTERM=truecolor
 export TERM="xterm-kitty"
