@@ -47,7 +47,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 function git-lazy() {
     git add .
     git commit -a -m "$1"
-    git push -u origin master
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
 
 function git-fixssh() {
