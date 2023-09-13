@@ -87,8 +87,8 @@ alias top="btop"
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias ln='ln -iv'
-alias l='exa --icons'
-alias ll='exa -lah --icons'
+alias l='eza --icons'
+alias ll='eza -lah --icons'
 alias md='mkdir -p'
 alias rd='rm -r'
 alias mkdir='mkdir -p'
@@ -111,12 +111,13 @@ clone(){sudo dd if=$1 bs=64M status=progress | gzip -c > $2.img.gz}
 restore(){gzip -cd < $1 | sudo dd of=$2 bs=64M}
 alias watchcpu='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias ramspeed='sudo dmidecode --type 17 | grep Speed'
-alias mp3="youtube-dl -i --extract-audio --audio-format mp3 --audio-quality 0"
-alias mp3playlist="youtube-dl -ict --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0"
+alias down="yt-dlp"
+alias mp3="yt-dlp -f bestaudio -x --audio-format mp3 "
+#alias mp3="yt-dlp -i --extract-audio --audio-format mp3 --audio-quality 0"
+alias mp3playlist="yt-dlp -ict --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0"
 alias wifi-on="sudo nmcli radio wifi on"
 alias wifi-off="sudo nmcli radio wifi off"
 alias wifi-scan="nmcli device wifi list"
-alias down="yt-dlp"
 alias publicip="curlie ipinfo.io --pretty"
 alias pi="curl -L https://ipgrab.io" # ipinfo.io/ip
 alias map="telnet mapscii.me"
