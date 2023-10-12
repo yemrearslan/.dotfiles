@@ -108,7 +108,7 @@ check-port(){ss -plant | grep :$1}	# which pid uses that port
 kill-port(){kill -9 $(lsof -t -i tcp:$1)}
 burn(){sudo dd if=$1 of=$2 bs=10M status=progress}
 clone(){sudo dd if=$1 bs=64M status=progress | gzip -c > $2.img.gz}
-restore(){gzip -cd < $1 | sudo dd of=$2 bs=64M}
+restore(){gzip -cd < $2 | sudo dd of=$1 bs=64M status=progress}
 alias watchcpu='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias ramspeed='sudo dmidecode --type 17 | grep Speed'
 alias down="yt-dlp"
