@@ -54,7 +54,7 @@ return packer.startup(function(use)
     use "akinsho/toggleterm.nvim"
     use "ahmedkhalf/project.nvim"
     use "lewis6991/impatient.nvim"
-    use "lukas-reineke/indent-blankline.nvim"
+--    use "lukas-reineke/indent-blankline.nvim"
     use "goolord/alpha-nvim"
     use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
     use "folke/which-key.nvim"
@@ -71,6 +71,9 @@ return packer.startup(function(use)
     use "cocopon/iceberg.vim"
     -- use "dracula/vim"
     -- use "gruvbox-community/gruvbox"
+
+    -- indent                                                                                                                                                     
+    use { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {  indent = { char = "│" }, } }     
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
