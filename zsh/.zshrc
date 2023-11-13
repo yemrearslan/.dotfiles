@@ -96,7 +96,7 @@ alias grep="grep --color='auto'"
 alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 alias gitfetch="onefetch"
 alias yt="ytfzf"
-alias ip="ip -c"
+#alias ip="ip -c"
 alias s="kitty +kitten ssh"
 #alias curl="curlie --pretty"
 #alias rm='trash' # Use `trash` program instead of built-in irrecoverable way to delete nodes.
@@ -106,7 +106,7 @@ alias s="kitty +kitten ssh"
 wifi-connect(){sudo nmcli device wifi connect $1 password $2}
 check-port(){ss -plant | grep :$1}	# which pid uses that port
 kill-port(){kill -9 $(lsof -t -i tcp:$1)}
-burn(){sudo dd if=$1 of=$2 status=progress}
+burn(){sudo dd if=$1 of=$2 oflag=direct status=progress}
 clone(){sudo dd if=$1 status=progress | gzip -c > $2.img.gz}
 restore(){sudo umount $2s1; gunzip -cd $1 | sudo dd of=$2 iflag=fullblock status=progress}
 alias watchcpu='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
