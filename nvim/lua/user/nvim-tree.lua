@@ -16,7 +16,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+nvim_tree.setup({
   on_attach = on_attach,
   disable_netrw = false,
   hijack_netrw = false,
@@ -117,7 +117,7 @@ nvim_tree.setup {
         root_folder_modifier = ":t",
     },
 
-}
+})
 
 
 --
