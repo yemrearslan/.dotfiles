@@ -27,8 +27,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN=$(green ✔)
 function virtualenv_info { [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') ' }
 
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '' && return
-    echo '󰁔'
+    git branch >/dev/null 2>/dev/null && echo $(yellow ) && return
+    echo $(yellow 󰁔)
 }
 
 if [[ "$HOST" == "macbook" ]]; then 
@@ -53,6 +53,9 @@ if [[ "$distro" == "termux" ]]; then
     local hostname=$(blue galaxy)
 fi
 
-PROMPT="╭─ $user $(dim at) $hostname $(dim in) $current_dir \$(git_prompt_info) $date - $time
-╰─\$(virtualenv_info)\$(prompt_char) "
+local promt_arrow_top=$(yellow ╭─)
+local promt_arrow_down=$(yellow ╰─)
+
+PROMPT="$promt_arrow_top $user $(dim at) $hostname $(dim in) $current_dir \$(git_prompt_info) $date - $time
+$promt_arrow_down\$(virtualenv_info)\$(prompt_char) "
 
