@@ -37,8 +37,6 @@ elif [[ "$HOST" == "machine" ]]; then
     local hostname=$(red $HOST)
 elif [[ "$HOST" == "Makina" ]]; then 
     local hostname=$(orange $HOST)
-elif [[ "$HOST" == "placeholder" ]]; then 
-    local hostname=$(blue $HOST)
 else
     local hostname=$(yellow $HOST)
 fi
