@@ -21,5 +21,5 @@ ln -s $HOME/.dotfiles/kitty $HOME/.config/kitty
 ln -s $HOME/.dotfiles/ranger $HOME/.config/ranger
 
 # locale - emre keyboard
-sudo ln -s $HOME/.dotfiles/locale/tr /usr/share/X11/xkb/symbols/tr               # sudo chmod 644 /usr/share/X11/xkb/symbols/tr # sudo chown root:root /usr/share/X11/xkb/symbols/tr
-sudo ln -s $HOME/.dotfiles/locale/evdev.xml /usr/share/X11/xkb/rules/evdev.xml   # sudo chmod 644 /usr/share/X11/xkb/rules/evdev.xml # sudo chown root:root /usr/share/X11/xkb/rules/evdev.xml
+# sudo ln -s $HOME/.dotfiles/locale/tr /usr/share/X11/xkb/symbols/tr               # sudo chmod 644 /usr/share/X11/xkb/symbols/tr # sudo chown root:root /usr/share/X11/xkb/symbols/tr
+#sudo ln -s $HOME/.dotfiles/locale/evdev.xml /usr/share/X11/xkb/rules/evdev.xml   # sudo chmod 644 /usr/share/X11/xkb/rules/evdev.xml # sudo chown root:root /usr/share/X11/xkb/rules/evdev.xml
