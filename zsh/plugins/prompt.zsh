@@ -21,8 +21,8 @@ red(){echo "%F{124}$1%{$reset_color%}"}
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{239}on %F{147}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=$(git_red ✘✘✘)
-ZSH_THEME_GIT_PROMPT_CLEAN=$(green ✔)
+ZSH_THEME_GIT_PROMPT_DIRTY=$(git_red "    ")
+ZSH_THEME_GIT_PROMPT_CLEAN=$(green " 󰕥 ")
 
 function virtualenv_info { [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') ' }
 

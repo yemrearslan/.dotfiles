@@ -103,6 +103,7 @@ alias s="kitty +kitten ssh"
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # useful
+alias kitty-update="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 wifi-connect(){sudo nmcli device wifi connect $1 password $2}
 check-port(){ss -plant | grep :$1}	# which pid uses that port
 kill-port(){kill -9 $(lsof -t -i tcp:$1)}
