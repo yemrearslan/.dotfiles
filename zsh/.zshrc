@@ -140,6 +140,8 @@ alias bul="find . -name"
 alias ara="find . -name"
 alias icat="kitty +kitten icat"
 alias clipboard="kitty +kitten clipboard"
+alias sunshine-start="systemctl --user start sunshine"
+alias sunshine-stop="systemctl --user stop sunshine"
 fastfetch
 zsh_add_file_fullpath "$HOME/.shell.zsh"
 
