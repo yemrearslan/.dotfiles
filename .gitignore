@@ -12,3 +12,5 @@ zsh/.zcompdump*
 zsh/.dir_colors.old
 zsh/.zsh_sessions
 zsh/.zsh_history
+lazy-lock.json
+lazyvim.json
