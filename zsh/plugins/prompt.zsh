@@ -56,7 +56,7 @@ if [[ "$distro" == "termux" ]]; then
     elif [[ "$model" == "SM-S928B" ]]; then
       local hostname=$(yellow s24ultra)
     elif [[ "$model" == "SM-S908B" ]]; then
-      local hostname=$(blue s10plus)
+      local hostname=$(pink s10plus)
     else
       local hostname=$(blue galaxy)
     fi
