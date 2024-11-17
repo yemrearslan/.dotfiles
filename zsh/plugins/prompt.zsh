@@ -49,8 +49,15 @@ time=$(pink $time)
 local current_dir=$(yellow %~ )%{$reset_color%}
 
 if [[ "$distro" == "termux" ]]; then
+    local model=$(/system/bin/getprop ro.product.model) 
     local user=$(green emre)
-    local hostname=$(blue galaxy)
+    if [[ "$model" == "SM-X710" ]]; then
+      local hostname=$(blue tabs9)
+    elif [[ "$model" == "SM-S928B" ]]; then
+      local hostname=$(blue s24ultra)
+    else
+      local hostname=$(blue galaxy)
+    fi
 fi
 
 local promt_arrow_top=$(yellow ╭─)
