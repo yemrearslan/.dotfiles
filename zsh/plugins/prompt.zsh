@@ -52,9 +52,9 @@ if [[ "$distro" == "termux" ]]; then
     local model=$(/system/bin/getprop ro.product.model) 
     local user=$(green emre)
     if [[ "$model" == "SM-X710" ]]; then
-      local hostname=$(blue tabs9)
+      local hostname=$(git_red tabs9)
     elif [[ "$model" == "SM-S928B" ]]; then
-      local hostname=$(blue s24ultra)
+      local hostname=$(yellow s24ultra)
     elif [[ "$model" == "SM-S908B" ]]; then
       local hostname=$(blue s10plus)
     else
