@@ -9,7 +9,6 @@ mv $HOME/.config/nvim $HOME/.config/nvim.bak
 mv $HOME/.config/alacritty $HOME/.config/alacritty.bak
 mv $HOME/.config/i3 $HOME/.config/i3.bak
 
-
 ln -s $HOME/.dotfiles/zshenv $HOME/.zshenv
 ln -s $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
 
@@ -19,6 +18,7 @@ ln -s $HOME/.dotfiles/alacritty $HOME/.config/alacritty
 ln -s $HOME/.dotfiles/i3 $HOME/.config/i3
 ln -s $HOME/.dotfiles/kitty $HOME/.config/kitty
 ln -s $HOME/.dotfiles/ranger $HOME/.config/ranger
+ln -s $HOME/.dotfiles/helix $HOME/.config/helix
 
 # locale - emre keyboard
 # sudo ln -s $HOME/.dotfiles/locale/tr /usr/share/X11/xkb/symbols/tr               # sudo chmod 644 /usr/share/X11/xkb/symbols/tr # sudo chown root:root /usr/share/X11/xkb/symbols/tr
