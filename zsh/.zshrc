@@ -88,6 +88,7 @@ alias mv='mv -iv'
 alias cp='cp -iv'
 alias ln='ln -iv'
 alias l='eza --icons=always'
+alias ls='eza --icons=always'
 alias ll='eza -lahg --icons=always'
 alias md='mkdir -p'
 alias rd='rm -r'
@@ -136,7 +137,7 @@ alias serve="python3 -m http.server 9000"
 alias filetypes="for file in ./*(.); do file $file; done"
 alias rsync="rsync -avAXEWSlHh --no-compress --info=progress2 --inplace"
 alias dc="docker compose"
-alias dc="podman compose"
+alias pc="podman compose"
 alias bul="find . -name"
 alias ara="find . -name"
 alias syze="du -hs *"
