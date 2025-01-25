@@ -1,6 +1,6 @@
 export PATH="$HOME/.keys/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export EDITOR=nvim
+export EDITOR=hx
 export BROWSER="brave"
 export COLORTERM=truecolor
 export TERM="xterm-kitty"
@@ -80,8 +80,8 @@ alias vi="nvim"
 alias vim="vi"
 alias sudo='sudo '
 alias vimrc="nvim ~/.config/nvim/"
-alias sshconfig="nvim ~/.ssh/config"
-alias zshrc="nvim ~/.config/zsh/.zshrc"
+alias sshconfig="$EDITOR ~/.ssh/config"
+alias zshrc="$EDITOR ~/.config/zsh/.zshrc"
 alias sourcezsh="source ~/.config/zsh/.zshrc"
 alias top="btop"
 alias mv='mv -iv'
@@ -136,6 +136,7 @@ alias serve="python3 -m http.server 9000"
 alias filetypes="for file in ./*(.); do file $file; done"
 alias rsync="rsync -avAXEWSlHh --no-compress --info=progress2 --inplace"
 alias dc="docker compose"
+alias dc="podman compose"
 alias bul="find . -name"
 alias ara="find . -name"
 alias syze="du -hs *"
