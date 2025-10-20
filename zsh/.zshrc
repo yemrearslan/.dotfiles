@@ -12,6 +12,7 @@ HISTFILE=~/.cache/zshhistory
 HISTSIZE=100000
 SAVEHIST=100000
 
+#setopt noglob #    * ^ # ? gibi karakterlerin shell tarafından özel wildcard olarak algılanmamasını sağlıyor
 setopt autocd beep extendedglob		# nomatch
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit	# zsh autocomplete init
@@ -87,9 +88,17 @@ alias top="btop"
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias ln='ln -iv'
-alias l='eza --icons'
-alias ls='eza --icons'
-alias ll='eza -lahg --icons'
+
+if (( ${+aliases[l]} )); then unalias l; fi
+if (( ${+aliases[ls]} )); then unalias ls; fi
+if (( ${+aliases[ll]} )); then unalias ll; fi
+
+function l(){ eza $1 --icons }
+function ls(){ eza $1 --icons }
+function ll(){ eza $1 -lahg --icons }
+#alias l='eza --icons'
+#alias ls='eza --icons'
+#alias ll='eza -lahg --icons'
 alias md='mkdir -p'
 alias rd='rm -r'
 alias mkdir='mkdir -p'

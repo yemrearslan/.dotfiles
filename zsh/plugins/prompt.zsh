@@ -42,7 +42,7 @@ else
 fi
 
 local user=$(green %n)
-local date=%D{%d.%m.%y} # date with format dd.mm.yy
+local date=%D{%d.%m.%Y} # date with format dd.mm.yy
 local time=%* # 24hr time with seconds. # https://linux.die.net/man/3/strftime
 time=$(pink $time)
 #local hostname=$(blue $HOST)
