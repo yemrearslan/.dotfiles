@@ -3,13 +3,15 @@
 mv $HOME/.zshrc $HOME/.zshrc.bak
 mv $HOME/.zshenv $HOME/.zshenv.bak
 
+mkdir $HOME/.config
+
 mv $HOME/.config/zsh $HOME/.config/zsh.bak
 mv $HOME/.config/nvim $HOME/.config/nvim.bak
 mv $HOME/.config/alacritty $HOME/.config/alacritty.bak
 mv $HOME/.config/i3 $HOME/.config/i3.bak
 mv $HOME/.config/kitty $HOME/.config/kitty.bak
 mv $HOME/.config/ranger $HOME/.config/range.bak
-mv $HOME/.config/helix $HOME/.config/helix.bak
+mv $HOME/.config/helix $HOME/.config/hel.bak
 mv $HOME/.config/tmux $HOME/.config/tmux.bak
 
 ln -s $HOME/.dotfiles/zshenv $HOME/.zshenv
