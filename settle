@@ -2,6 +2,7 @@
 
 mv $HOME/.zshrc $HOME/.zshrc.bak
 mv $HOME/.zshenv $HOME/.zshenv.bak
+mv $HOME/.termux $HOME/.termux.bak
 
 mkdir $HOME/.config
 
@@ -15,6 +16,7 @@ mv $HOME/.config/helix $HOME/.config/hel.bak
 mv $HOME/.config/tmux $HOME/.config/tmux.bak
 
 ln -s $HOME/.dotfiles/zshenv $HOME/.zshenv
+ln -s $HOME/.dotfiles/termux $HOME/.termux
 
 ln -s $HOME/.dotfiles/zsh $HOME/.config/zsh
 ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
