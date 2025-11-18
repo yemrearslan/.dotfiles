@@ -76,6 +76,11 @@ wifi-reconnect(){
 	done
 }
 
+function srt-offset(){
+  mv $2 $2.bak
+  ffmpeg -itsoffset $1 -i $2.bak -c copy $2
+}
+
 # preferences
 alias vi="nvim"
 alias vim="vi"
