@@ -1,0 +1,149 @@
+#!/bin/bash
+
+# --- Ayarlar ---
+# İndirmelerin kaydedileceği klasör
+DL_DIR="$HOME/storage/downloads/Termux"
+mkdir -p "$DL_DIR"
+
+# URL Argümanı
+URL="$1"
+
+# Renk kodları (İndirme aşaması için)
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+# --- Bağımlılık Kontrolü ---
+# Eğer 'dialog' yüklü değilse otomatik yükle
+if ! command -v dialog &> /dev/null; then
+    echo "Görsel menü için 'dialog' paketi yükleniyor..."
+    pkg install dialog -y
+fi
+
+# URL Kontrolü
+if [ -z "$URL" ]; then
+    dialog --title "Hata" --msgbox "URL bulunamadı!\nLütfen bir link paylaşın." 6 40
+    exit 1
+fi
+
+# --- Yardımcı Fonksiyonlar ---
+
+# Playlist Seçenekleri Menüsü
+check_playlist_options() {
+    if [[ "$URL" == *"list="* ]]; then
+        PL_CHOICE=$(dialog --clear --title "Oynatma Listesi Tespit Edildi" \
+        --menu "Ne yapmak istersiniz?" 12 50 3 \
+        "1" "Tüm Listeyi İndir" \
+        "2" "Aralık Belirle (örn: 5-11)" \
+        "3" "Sadece Şu Anki Videoyu İndir" \
+        2>&1 >/dev/tty)
+
+        case $PL_CHOICE in
+            "1")
+                PL_ARGS="--yes-playlist"
+                ;;
+            "2")
+                # Input Box ile aralık alma
+                RANGE=$(dialog --title "Aralık Girin" --inputbox "Örn: 1,2,5-10" 8 40 2>&1 >/dev/tty)
+                if [ -z "$RANGE" ]; then
+                     # Boş girerse vazgeçmesin, sadece videoyu indirsin
+                     PL_ARGS="--no-playlist"
+                else
+                     PL_ARGS="--yes-playlist --playlist-items $RANGE"
+                fi
+                ;;
+            "3")
+                PL_ARGS="--no-playlist"
+                ;;
+            *)
+                # İptal edilirse (ESC) varsayılan olarak sadece video
+                PL_ARGS="--no-playlist"
+                ;;
+        esac
+    else
+        PL_ARGS="--no-playlist"
+    fi
+}
+
+# --- Ana Mantık ---
+
+# 1. Durum: X.com veya Twitter
+if [[ "$URL" == *"x.com"* ]] || [[ "$URL" == *"twitter.com"* ]]; then
+    clear
+    echo -e "${CYAN}[X/Twitter] Video indiriliyor...${NC}"
+    yt-dlp -o "$DL_DIR/%(uploader)s_%(title)s.%(ext)s" --merge-output-format mp4 "$URL"
+
+# 2. Durum: YouTube Music
+elif [[ "$URL" == *"music.youtube.com"* ]]; then
+    check_playlist_options
+    clear
+    echo -e "${CYAN}[YouTube Music] İndiriliyor...${NC}"
+    
+    yt-dlp $PL_ARGS -o "$DL_DIR/%(title)s.%(ext)s" \
+        -f bestaudio \
+        --extract-audio --audio-format mp3 --audio-quality 0 \
+        --add-metadata --embed-thumbnail \
+        "$URL"
+
+# 3. Durum: YouTube (Normal)
+elif [[ "$URL" == *"youtube.com"* ]] || [[ "$URL" == *"youtu.be"* ]]; then
+    
+    check_playlist_options
+
+    # Format Seçim Menüsü
+    TYPE_CHOICE=$(dialog --clear --title "YouTube İndirici" \
+    --menu "İndirme Türünü Seçin:" 10 50 2 \
+    "1" "Video (MP4)" \
+    "2" "Sadece Ses (MP3)" \
+    2>&1 >/dev/tty)
+
+    if [[ "$TYPE_CHOICE" == "2" ]]; then
+        # Sadece Ses
+        clear
+        echo -e "${CYAN}[YouTube] Ses indiriliyor...${NC}"
+        yt-dlp $PL_ARGS -o "$DL_DIR/%(title)s.%(ext)s" \
+            -f bestaudio \
+            --extract-audio --audio-format mp3 --audio-quality 0 \
+            --add-metadata --embed-thumbnail \
+            "$URL"
+    elif [[ "$TYPE_CHOICE" == "1" ]]; then
+        # Video Kalitesi Seçim Menüsü
+        QUAL_CHOICE=$(dialog --clear --title "Video Kalitesi" \
+        --menu "Çözünürlük Seçin (MP4):" 12 50 4 \
+        "1" "En Yüksek (Max)" \
+        "2" "1080p" \
+        "3" "720p" \
+        "4" "480p" \
+        2>&1 >/dev/tty)
+
+        case $QUAL_CHOICE in
+            "2") RES_LIMIT="[height<=1080]" ;;
+            "3") RES_LIMIT="[height<=720]" ;;
+            "4") RES_LIMIT="[height<=480]" ;;
+            *) RES_LIMIT="" ;; # Max
+        esac
+
+        clear
+        echo -e "${CYAN}[YouTube] Video indiriliyor...${NC}"
+        
+        yt-dlp $PL_ARGS -o "$DL_DIR/%(title)s.%(ext)s" \
+            -f "bestvideo${RES_LIMIT}[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+            --merge-output-format mp4 \
+            --add-metadata --embed-thumbnail \
+            "$URL"
+    else
+        clear
+        echo "İşlem iptal edildi."
+        exit 0
+    fi
+
+# 4. Durum: Diğer Siteler
+else
+    clear
+    echo -e "${CYAN}[Genel] İndirme başlatılıyor...${NC}"
+    yt-dlp -o "$DL_DIR/%(title)s.%(ext)s" "$URL"
+fi
+
+echo ""
+echo -e "${GREEN}İşlem Tamamlandı!${NC}"
+read -p "Çıkmak için Enter'a basın..."
