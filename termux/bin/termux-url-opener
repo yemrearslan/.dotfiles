@@ -17,27 +17,22 @@ NC='\033[0m' # No Color
 URL="$1"
 
 # --- 1. Bölüm: Bağımlılık Kontrolü ---
-# Python, yt-dlp ve ffmpeg kontrolü yapılır.
 check_dependencies() {
     # yt-dlp veya ffmpeg komut olarak yoksa kurulum öner
     if ! command -v yt-dlp &> /dev/null || ! command -v ffmpeg &> /dev/null; then
         clear
         echo -e "${RED}Dikkat: Gerekli paketler eksik!${NC}"
-        echo -e "Bu scriptin çalışması için ${YELLOW}python, ffmpeg ve yt-dlp${NC} gereklidir."
+        echo -e "Bu scriptin çalışması için ${YELLOW}python-yt-dlp ve ffmpeg${NC} gereklidir."
         echo ""
-        echo -n "Kurulum yapılsın mı? (pkg update && install...) [E/h]: "
+        echo -n "Kurulum yapılsın mı? (pkg update && pkg install...) [E/h]: "
         read install_choice
         
         # Varsayılan cevap Evet (E)
         if [[ -z "$install_choice" ]] || [[ "$install_choice" =~ ^[EeYy]$ ]]; then
             echo -e "${BLUE}Paket listesi güncelleniyor ve araçlar kuruluyor...${NC}"
             
-            # Termux paketlerini kur
-            pkg update -y && pkg install python ffmpeg -y
-            
-            # yt-dlp'yi pip üzerinden kur (Genelde daha günceldir)
-            echo -e "${BLUE}yt-dlp kuruluyor/güncelleniyor...${NC}"
-            pip install yt-dlp --upgrade
+            # Kullanıcının isteği üzerine pkg üzerinden kurulum
+            pkg update -y && pkg install python-yt-dlp ffmpeg -y
             
             echo -e "${GREEN}Kurulum tamamlandı! Script devam ediyor...${NC}"
             sleep 2
@@ -48,13 +43,12 @@ check_dependencies() {
     fi
 }
 
-# Bağımlılıkları kontrol et
 check_dependencies
 
 # --- Arayüz Başlangıcı ---
 clear
 echo -e "${CYAN}========================================${NC}"
-echo -e "${CYAN}      TERMUX YT-DLP İNDİRİCİ v3.0       ${NC}"
+echo -e "${CYAN}      TERMUX YT-DLP İNDİRİCİ v3.2       ${NC}"
 echo -e "${CYAN}========================================${NC}"
 echo -e "İşlenen URL: ${YELLOW}$URL${NC}"
 echo ""
@@ -67,6 +61,9 @@ if [ -z "$URL" ]; then
 fi
 
 # --- Yardımcı Fonksiyonlar ---
+
+# Varsayılan Çıktı Şablonu
+OUTPUT_TEMPLATE="$DL_DIR/%(title)s.%(ext)s"
 
 # Playlist Kontrol ve Ayar Fonksiyonu
 check_playlist_options() {
@@ -84,16 +81,23 @@ check_playlist_options() {
                 echo -n "Aralığı girin (örn: 1,2,5-10): "
                 read pl_items
                 PL_ARGS="--yes-playlist --playlist-items $pl_items"
+                # Playlist modu: Klasör oluştur ve numaralandır
+                OUTPUT_TEMPLATE="$DL_DIR/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
                 ;;
             3)
                 PL_ARGS="--no-playlist"
+                # Tek video modu: Varsayılan şablon kalır
+                OUTPUT_TEMPLATE="$DL_DIR/%(title)s.%(ext)s"
                 ;;
             *)
                 PL_ARGS="--yes-playlist"
+                # Playlist modu: Klasör oluştur ve numaralandır
+                OUTPUT_TEMPLATE="$DL_DIR/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
                 ;;
         esac
     else
         PL_ARGS="--no-playlist"
+        OUTPUT_TEMPLATE="$DL_DIR/%(title)s.%(ext)s"
     fi
 }
 
@@ -110,7 +114,7 @@ elif [[ "$URL" == *"music.youtube.com"* ]]; then
     check_playlist_options
     
     echo -e "${GREEN}En yüksek kalitede ses indiriliyor...${NC}"
-    yt-dlp $PL_ARGS -o "$DL_DIR/%(title)s.%(ext)s" \
+    yt-dlp $PL_ARGS -o "$OUTPUT_TEMPLATE" \
         -f bestaudio \
         --extract-audio --audio-format mp3 --audio-quality 0 \
         --add-metadata --embed-thumbnail \
@@ -130,7 +134,7 @@ elif [[ "$URL" == *"youtube.com"* ]] || [[ "$URL" == *"youtu.be"* ]]; then
     if [[ "$type_choice" == "2" ]]; then
         # Sadece Ses
         echo -e "${GREEN}Ses (En iyi kalite) indiriliyor...${NC}"
-        yt-dlp $PL_ARGS -o "$DL_DIR/%(title)s.%(ext)s" \
+        yt-dlp $PL_ARGS -o "$OUTPUT_TEMPLATE" \
             -f bestaudio \
             --extract-audio --audio-format mp3 --audio-quality 0 \
             --add-metadata --embed-thumbnail \
@@ -155,7 +159,7 @@ elif [[ "$URL" == *"youtube.com"* ]] || [[ "$URL" == *"youtu.be"* ]]; then
 
         echo -e "${GREEN}Video indiriliyor...${NC}"
         
-        yt-dlp $PL_ARGS -o "$DL_DIR/%(title)s.%(ext)s" \
+        yt-dlp $PL_ARGS -o "$OUTPUT_TEMPLATE" \
             -f "bestvideo${RES_LIMIT}[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
             --merge-output-format mp4 \
             --add-metadata --embed-thumbnail \
@@ -166,7 +170,6 @@ elif [[ "$URL" == *"youtube.com"* ]] || [[ "$URL" == *"youtu.be"* ]]; then
 else
     echo -e "${YELLOW}[Diğer] URL tanınmadı, standart indirme deneniyor...${NC}"
     
-    # yt-dlp ile indirmeyi dene, başarısız olursa else bloğuna gir
     if yt-dlp -o "$DL_DIR/%(title)s.%(ext)s" "$URL"; then
         echo ""
         echo -e "${GREEN}İndirme Başarılı!${NC}"
