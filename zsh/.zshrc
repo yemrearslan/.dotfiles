@@ -127,7 +127,7 @@ clone(){sudo dd if=$1 status=progress | gzip -c > $2.img.gz}
 restore(){sudo umount $2s1; gunzip -cd $1 | sudo dd of=$2 iflag=fullblock status=progress}
 alias watchcpu='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias ramspeed='sudo dmidecode --type 17 | grep Speed'
-alias down="yt-dlp"
+#alias down="yt-dlp"
 alias mp3="yt-dlp -f bestaudio -x --audio-format mp3 "
 #alias mp3="yt-dlp -i --extract-audio --audio-format mp3 --audio-quality 0"
 alias mp3playlist="yt-dlp -ict --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0"
