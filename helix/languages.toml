@@ -1,0 +1,59 @@
+# Merkezi LSP tanımları bloğu
+[language-server]
+rust-analyzer = { command = "rust-analyzer" }
+
+# 'ruff-lsp' tanımını tamamen 'ruff-server' ile değiştiriyoruz.
+# Sunucuya "ruff-server" adını verelim, komut ise "ruff" olacak.
+ruff-server = { command = "ruff", args = ["server", "--preview"] }
+
+marksman = { command = "marksman" }
+taplo = { command = "taplo", args = ["lsp", "stdio"] }
+yaml-language-server = { command = "yaml-language-server", args = ["--stdio"] }
+vscode-json-language-server = { command = "vscode-json-language-server", args = ["--stdio"] }
+
+# ===================================================================
+
+# Dil tanımları
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+formatter = { command = "rustfmt" }
+auto-format = true
+
+# --- PYTHON BÖLÜMÜNÜN GÜNCELLENMİŞ HALİ ---
+[[language]]
+name = "python"
+# LSP olarak artık yukarıda tanımladığımız 'ruff-server'ı kullanıyoruz
+language-servers = ["ruff-server"]
+
+# FORMATLAYICI olarak da 'ruff format' kullanmaya devam ediyoruz.
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
+indent = { tab-width = 4, unit = " " }
+roots = ["pyproject.toml", ".git"]
+
+# --- DİĞER DİLLER AYNI KALIYOR ---
+[[language]]
+name = "markdown"
+language-servers = ["marksman"]
+
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["format", "-"] }
+auto-format = true
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+
+
+[[language]]
+name = "bash"
+#language-servers = ["rust-analyzer"]
+formatter = { command = "shfmt" }
+auto-format = true
