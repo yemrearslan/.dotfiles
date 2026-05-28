@@ -163,4 +163,4 @@ alias sunshine-start="systemctl --user start sunshine"
 alias sunshine-stop="systemctl --user stop sunshine"
 fastfetch
 zsh_add_file_fullpath "$HOME/.shell.zsh"
-
+alias reboottowin="sudo efibootmgr -n 0000 && sudo reboot"  
